@@ -1,0 +1,22 @@
+.btn{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 60px;
+    width:220px;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color:  #03AEEE;
+    color:white; 
+}
+
+.btn-secondary {
+    background-color:  #ffffff;
+    color:gray; 
+    border: 1px solid gray; 
+}
