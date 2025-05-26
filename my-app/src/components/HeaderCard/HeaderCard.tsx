@@ -4,7 +4,7 @@ import "./HeaderCard.css"
 const HeaderCard = ({title}:{title:string}) => {
   return (
     <div className="header">
-        {title}
+        <h2>{title}</h2>
     </div>
   )
 }

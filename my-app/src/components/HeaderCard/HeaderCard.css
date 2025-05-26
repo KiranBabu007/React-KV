@@ -1,5 +1,4 @@
 .header{
-   
     display: flex;
     justify-content: flex-start;
     padding-left: 20px;
@@ -12,10 +11,8 @@
     margin: 20px;
     background-color:#FAFAFA;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size:28px;
+    font-size:24px;
     font-style: bold;
     margin-top:50px;
     padding: 20px;
-  
-
 }
