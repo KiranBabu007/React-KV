@@ -7,22 +7,28 @@
     
 }
 
-.logo{
-    width: 500px;
-}
-
-.logo img{
-    width:300px;
-}
-
 .container {
     height: 100%;
     display:flex;
     align-items: center;
     flex-direction: column;
     justify-content:center;
+    flex-wrap: wrap;
+    object-fit: contain;
     gap:20px;
 }
+
+.login-logo{
+    width: 100%
+   
+}
+
+.login-logo img{
+    height:45px
+    
+}
+
+
 
 .form {
     display: flex;
@@ -32,18 +38,41 @@
     width:300px;
 }
 
-.username label{
-    font-size: 12px;
-    background-color: white;
-    position: absolute;
-    top:3;
-    margin-left: 15px;
-    padding: 2px;
-    color: #03AEEE;
-    
+.username{
+    position:relative;
 }
 
+
+.username input:focus {
+    outline: none;
+    border: 1px solid #03AEEE;
+}
+
+
+
+.username > label {
+    font-size: 16px;
+    left: 0px;
+    top: 8px;
+    position: absolute;
+    margin-left: 10px;
+    padding: 2px;
+    transition: .2s;
+    font-weight: 100;
+
+    pointer-events: none;
+}
+
+
+
+
+.username > input:focus ~ label {
+    color: #03AEEE;
+    top:-10px ;
+    background-color: white;
+    font-size: 14px;
     
+}
 
 input{
    
@@ -56,6 +85,12 @@ input{
     font-weight: 400;
 }
 
+p{
+    color: red;
+    background-color: rgb(255, 208, 208);
+    padding: 10px;
+    border-radius: 5px;
+}
 
 
 

@@ -18,14 +18,12 @@ const CreateEmployee = () => {
           <SelectInput label="Department" options={["Marketingr","Finance"]}  name="department" />
           <SelectInput label="role" options={["QA Engineer","FrontEnd Engineer"]}  name="role" />
           <SelectInput label="Status" options={["Single","Married"]}  name="Status" />
-          
-
           <div className="details">
             <label htmlFor="address">Address</label>
             <input type="text" id="address" placeholder="Flat No / House No" />
             <input type="text" id="address" placeholder="Address Line 1" />
             <input type="text" id="address" placeholder="Address Line 2"/>
-            </div>
+          </div>
         </form>
         <div className="btns">
           <Button variant="primary">Create</Button>

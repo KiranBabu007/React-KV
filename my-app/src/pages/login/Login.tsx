@@ -8,8 +8,6 @@ const Login = () => {
       <div className="main-login">
       
           <LoginLeft />
-        
-        
           <LoginRight />
        
       </div>
