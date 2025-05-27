@@ -93,5 +93,22 @@ p{
 }
 
 
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.checkbox-container input {
+  cursor: pointer;
+}
+
+.checkbox-container label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
 
 
