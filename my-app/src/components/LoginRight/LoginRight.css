@@ -89,19 +89,25 @@ p{
     color: red;
     background-color: rgb(255, 208, 208);
     padding: 10px;
+    margin-top: -20px;
+    margin-bottom: 10px;
     border-radius: 5px;
 }
 
 
 .checkbox-container {
+
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   margin-top: 10px;
+
 }
 
 .checkbox-container input {
   cursor: pointer;
+  color: #03AEEE;
+  
 }
 
 .checkbox-container label {

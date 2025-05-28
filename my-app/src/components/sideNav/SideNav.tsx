@@ -9,7 +9,7 @@ const SideNav = () => {
 
         <nav>
           <div className="emp-button">
-            <img src="./icon.svg" alt="" />
+            <img src="/icon.svg" alt="" />
             <a >Employee List</a>
           </div>
         </nav>

@@ -1,13 +1,14 @@
+import { Outlet } from "react-router-dom"
 import SideNav from "../components/sideNav/SideNav"
 import "./Layout.css"
 
 
 
-const Layout = ({children}:{children:React.ReactNode}) => {
+const Layout = () => {
   return (
     <div className="layout">
         <SideNav />
-        {children}
+        <Outlet />
     </div>
   )
 }

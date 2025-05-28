@@ -1,5 +1,5 @@
 .left{
-    background-color:  lightskyblue;
+    background-color:  rgba(135, 206, 250, 0.705);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .image img{
- border-radius: 50%;
+ border-radius: 60%;
  height: 760px;
  width:800px;
  display: flex;
