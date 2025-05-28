@@ -19,12 +19,14 @@
     color:white; 
     width:300px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .btn-secondary {
     background-color:  #ffffff;
     color:gray; 
     border: 1px solid gray; 
+    cursor: pointer;
 }
 
 .btn-secondary-clear{

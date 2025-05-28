@@ -3,8 +3,10 @@ import Button from "../../components/Button/Button";
 import "./CreateEmployee.css";
 import UserInput from "../../components/UserInput/UserInput";
 import SelectInput from "../../components/SelectInput/SelectInput";
+import { useNavigate } from "react-router-dom";
 
 const CreateEmployee = () => {
+  const navigate=useNavigate()
   return (
     <div className="main">
       <div className="header-container">
@@ -28,6 +30,13 @@ const CreateEmployee = () => {
         <div className="btns">
           <Button variant="primary">Create</Button>
           <Button variant="secondary">Cancel</Button>
+        </div>
+
+        <div style={{margin:5}}>
+          <Button variant="secondary" onClick={()=>{
+            localStorage.setItem("loggedIn","false")
+            navigate("/login")
+          }}>Log out</Button>
         </div>
       </div>
     </div>

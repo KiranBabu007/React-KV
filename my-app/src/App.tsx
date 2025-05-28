@@ -1,43 +1,56 @@
+import Counter from "./components/Counter/Counter";
+import CreateEmployee from "./pages/CreateEmployee/CreateEmployee";
+import Employee from "./pages/Employee/Employee";
+import Layout from "./pages/Layout";
+import Login from "./pages/login/Login";
+import NotFound from "./pages/NotFound/NotFound";
+import UncontrolledLogin from "./pages/uncontrolledLogin/UncontrolledLogin";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
-import Counter from './components/Counter/Counter'
-import CreateEmployee from './pages/CreateEmployee/CreateEmployee'
-import Layout from './pages/Layout'
-import Login from './pages/login/Login'
-import NotFound from './pages/NotFound/NotFound'
-import UncontrolledLogin from './pages/uncontrolledLogin/UncontrolledLogin'
-import {  createBrowserRouter, RouterProvider } from 'react-router-dom'
-
-
-
+const isLoggedIn = () => {
+  return localStorage.getItem("loggedIn") == "true";
+};
 
 const router = createBrowserRouter([
   {
-    path:"/login",
-    element: <Login/>
+    path: "/login",
+    element: <Login />,
   },
   {
-    path:"/employee",
-    element:<Layout/>,
-    children:[{
-      path:"create",element:<CreateEmployee/>
-    }]
+    path: "/",
+    element: isLoggedIn() ? <Navigate to="/employee/create" /> : <Login />,
   },
   {
-    path:"*",
-    element:<NotFound/>
-  }
-])
+    path: "/employee",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Employee />,
+      },
+      {
+        path: "create",
+        element: <CreateEmployee />,
+      },
+    ],
+  },
 
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]);
 
 function App() {
-
   return (
     <>
-      
-  <RouterProvider router={router} />
-      
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

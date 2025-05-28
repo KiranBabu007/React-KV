@@ -4,6 +4,7 @@ import "./LoginRight.css";
 import useMousePosition from "../../hooks/useMousePosition";
 import LoginInput from "../LoginInput/LoginInput";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useNavigate } from "react-router-dom";
 
 const LoginRight = () => {
   const [name, setName] = useState("");
@@ -20,6 +21,7 @@ const LoginRight = () => {
     "showPassword",
     false
   );
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (name.length >= 10) {
@@ -38,7 +40,15 @@ const LoginRight = () => {
     if (userRef.current) {
       userRef.current?.focus();
     }
+    localStorage.setItem("loggedIn","false")
   }, []);
+
+  const handleClick=()=>{
+    if (name==password){
+      localStorage.setItem("loggedIn","true")
+      navigate("/")
+    }
+  }
 
   return (
     <div className="right">
@@ -89,7 +99,7 @@ const LoginRight = () => {
         </div>
 
         <div>
-          <Button variant="primary-login">Login</Button>
+          <Button onClick={handleClick} variant="primary-login">Login</Button>
         </div>
       </div>
     </div>
