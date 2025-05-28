@@ -6,19 +6,19 @@ import "./Layout.css"
 
 const Layout = () => {
 
-   const isLoggedIn = () => {
-  return localStorage.getItem("loggedIn") == "true";
-};
-const navigate=useNavigate()
+  const isLoggedIn = () => {
+    return localStorage.getItem("loggedIn") == "true";
+  };
+  const navigate = useNavigate()
 
-  if(!isLoggedIn){
- navigate("/login")
- 
-}
+  if (!isLoggedIn) {
+    navigate("/login")
+
+  }
   return (
     <div className="layout">
-        <SideNav />
-        <Outlet />
+      <SideNav />
+      <Outlet />
     </div>
   )
 }

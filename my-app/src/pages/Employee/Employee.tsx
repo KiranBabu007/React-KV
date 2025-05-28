@@ -12,7 +12,6 @@ const Employee = () => {
        <label>Filter By</label> 
         <select name={status} id={status} defaultValue="Status">
         <option value="Status">Status </option>
-        
       
       </select> 
       <button className='create-button'>Create Employee</button>
