@@ -18,7 +18,71 @@ const data: EmpDetails[] = [
     emp_id: "123",
     Joining_date: "2021.05.04",
     Role: "Developer",
-    Status: "Working",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Inactive",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Probation",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
+    Experience: "6",
+  },
+  {
+    name: "Jithin",
+    emp_id: "123",
+    Joining_date: "2021.05.04",
+    Role: "Developer",
+    Status: "Active",
     Experience: "6",
   },
 ];
@@ -60,7 +124,10 @@ const Employee = () => {
               </div>
 
               <div className="emp-detail-cards">
-                <DetailCard data={data[0]} />
+                {
+                  data.map((data)=> <DetailCard key={data.emp_id} data={data} />)
+                }
+                
               </div>
             </div>
           </div>
