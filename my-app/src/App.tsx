@@ -11,9 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-const isLoggedIn = () => {
-  return localStorage.getItem("loggedIn") == "true";
-};
+
 
 const router = createBrowserRouter([
   {
@@ -22,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: isLoggedIn() ? <Navigate to="/employee/create" /> : <Login />,
+    element:  <Login />,
   },
   {
     path: "/employee",

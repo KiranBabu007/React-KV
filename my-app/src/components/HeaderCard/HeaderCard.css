@@ -1,11 +1,11 @@
 .header{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding-left: 20px;
     align-items: center;
     box-shadow: 3px 3px 10px lightgray;
     height:100px;
-    width:100%;
+    width:150vh;
     margin-top: 250px;
     border-radius: 10px;
     margin: 20px;
@@ -15,4 +15,9 @@
     font-style: bold;
     margin-top:50px;
     padding: 20px;
+}
+
+.employee-functions{
+    display: flex;
+    gap:2px
 }
