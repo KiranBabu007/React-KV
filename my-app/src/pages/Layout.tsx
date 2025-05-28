@@ -18,7 +18,9 @@ const Layout = () => {
   return (
     <div className="layout">
       <SideNav />
-      <Outlet />
+      
+        <Outlet />
+      
     </div>
   )
 }

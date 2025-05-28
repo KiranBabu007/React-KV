@@ -1,6 +1,7 @@
 import Counter from "./components/Counter/Counter";
 import CreateEmployee from "./pages/CreateEmployee/CreateEmployee";
 import Employee from "./pages/Employee/Employee";
+import EmployeeDetails from "./pages/EmployeeDetails/EmployeeDetails";
 import Layout from "./pages/Layout";
 import Login from "./pages/login/Login";
 import NotFound from "./pages/NotFound/NotFound";
@@ -10,8 +11,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-
-
 
 const router = createBrowserRouter([
   {
@@ -34,8 +33,14 @@ const router = createBrowserRouter([
         path: "create",
         element: <CreateEmployee />,
       },
+      {
+        path:":id",
+        element:<EmployeeDetails />
+      }
     ],
   },
+
+  
 
   {
     path: "*",

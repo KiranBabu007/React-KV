@@ -1,21 +1,20 @@
-import "./SideNav.css"
+import "./SideNav.css";
 
 const SideNav = () => {
   return (
     <div className="sidebar">
-        <div className="side-logo">
-          <img src="/kv-logo.png" alt="$" />
+      <div className="side-logo">
+        <img src="/kv-logo.png" alt="$" />
+      </div>
+
+      <div className="sidenav-btn-container"> 
+        <div className="emp-button">
+          <img src="/icon.svg" alt="" />
+          <a>Employee List</a>
         </div>
-
-        <nav>
-          <div className="emp-button">
-            <img src="/icon.svg" alt="" />
-            <a >Employee List</a>
-          </div>
-        </nav>
+      </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default SideNav
+export default SideNav;

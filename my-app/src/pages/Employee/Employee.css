@@ -1,5 +1,73 @@
-.create-button{
-    background-color: rgba(148, 164, 223, 0.918);
-    border: none;
-    padding: 5px;
+.main-emp{
+    width:100%;
+    background-color: #FAFAFA;
+    margin-top: 100px;
 }
+
+.header-container{
+    padding: 10px;
+}
+
+
+.create-button{
+    background-color: #03AEEE;
+    border-radius:10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+.status-container{
+    padding: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #03AEEE;
+    border-radius: 10px;
+}
+
+.create-button span{
+    font-size: 24px;
+}
+.status-select{
+    background-color: #03AEEE;
+    color: white;
+    padding: 5px;
+    border:none;
+    font-size:20px;
+    
+
+}
+
+.employee-functions{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.emp-list-container{
+    margin:10px;
+    width: 1500px;
+    padding-right: 50px;
+    border-radius: 5px;
+    
+}
+
+.emp-list{
+    background-color: #03AEEE;
+    padding: 10px;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.list-header{
+    
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+
