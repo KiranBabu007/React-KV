@@ -8,6 +8,7 @@
     grid-template-columns: repeat(7,1fr) ;
     background-color: rgb(255, 255, 255);
     margin: 10px;
+    padding-left: 20px;
     padding: 10px;
     box-shadow: 1px 1px 5px grey;
     border-radius: 10px;
@@ -20,31 +21,32 @@
 }
 
 .dlt-icon,.edit-icon{
-    font-size: 50px;
+    font-size: 30px;
     margin: 5px;
+    
 }
 
 .sts-btn{
     display: grid;
     place-content: center;
-    width:100px;
-    padding: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width:150px;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 50px;
     
 }
 
 .status-btn-active{
-    background-color: rgba(0, 255, 0, 0.856);
+    background-color: #c4f4be;
 }
 
 .status-btn-inactive{
-    background-color: rgba(255, 0, 0, 0.562);
+    background-color: #ffc9bf;
 }
 
 .status-btn-probation{
-    background-color: rgba(255, 255, 0, 0.473);
+    background-color: #F5ECB8;
 }
 
 

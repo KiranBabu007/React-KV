@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import "./Employee.css";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import HeaderButton from "../../components/HeaderButton/HeaderButton";
+import { useNavigate } from "react-router-dom";
+import Popup from "../../components/Popup/Popup";
 
 interface EmpDetails {
   name: string;
@@ -89,8 +91,14 @@ const data: EmpDetails[] = [
 ];
 
 const Employee = () => {
+
+  const [popup,setPopup]=useState(false)
+
+  const navigate=useNavigate()
   return (
       <div className="main-emp">
+
+        { popup && <Popup setPopup={setPopup} />}
         <div className="header-container">
           <HeaderCard
             title="Employee"
@@ -103,7 +111,9 @@ const Employee = () => {
                   </select>
                 </div>
 
-                <HeaderButton label={"Create Employee"} />
+                <HeaderButton  onClick={()=>{
+            navigate("/employee/create")
+          }} label={"Create Employee"} />
               </div>
             }
           />
@@ -124,7 +134,7 @@ const Employee = () => {
 
               <div className="emp-detail-cards">
                 {
-                  data.map((data)=> <DetailCard key={data.emp_id} data={data} />)
+                  data.map((data)=> <DetailCard  setPopup={setPopup} key={data.emp_id} data={data} />)
                 }
                 
               </div>

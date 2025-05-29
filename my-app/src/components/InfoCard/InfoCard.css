@@ -1,0 +1,13 @@
+.infocard-container{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    margin: 20px;
+}
+
+.info-title span{
+    color: grey;
+    font-size: 16px;
+}
+
+

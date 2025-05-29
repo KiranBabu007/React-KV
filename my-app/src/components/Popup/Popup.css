@@ -1,0 +1,38 @@
+.popup-container{
+    display: grid;
+    place-content: center;
+    position: fixed;
+    height: 100%;
+    width:100%;
+    left:0;
+    top:0;
+    z-index:5;
+    background-color: rgba(0, 0, 0, 0.226) ;
+}
+
+.popup-box{
+    height:250px;
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+}
+
+.popup-title{
+    font-size: 24px;
+    margin: 5px;
+}
+
+.popup-subtitle{
+    font-size: 18px;
+    margin: 5px;
+}
+
+.popup-btns{
+    display: flex;
+    gap: 8px;
+}
+

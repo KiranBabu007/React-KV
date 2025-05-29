@@ -14,15 +14,7 @@ const SideNav = () => {
           <Link to="/employee" >Employee List</Link>
         </div>
 
-        <div className="emp-button">
-          <img src="/icon.svg" alt="" />
-          <Link to="/employee/create" >Create Employee</Link>
-        </div>
-
-        <div className="emp-button">
-          <img src="/icon.svg" alt="" />
-          <Link to="/employee/edit" >Edit Employee</Link>
-        </div>
+        
 
         
       </div>
