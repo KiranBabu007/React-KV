@@ -1,7 +1,8 @@
 .main-emp{
     width:100%;
-    background-color: #FAFAFA;
-    margin-top: 100px;
+     background-color: #FAFAFA;
+     margin-top: 110px;
+   
 }
 
 .header-container{
@@ -51,7 +52,8 @@
 
 .emp-list-container{
     margin:10px;
-    width: 1500px;
+  
+    width: 1600px;
     padding-right: 50px;
     border-radius: 5px;
     
@@ -79,6 +81,6 @@
 .emp-detail-cards{
     overflow: scroll;
     max-height: 650px;
-    overflow-x: hidden;
-    
+    overflow-x: hidden;        
 }
+

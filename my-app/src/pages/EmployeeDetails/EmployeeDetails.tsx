@@ -1,51 +1,25 @@
-import React, { useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import './EmployeeDetails.css';
-import Button from '../../components/Button/Button';
-
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import HeaderCard from '../../components/HeaderCard/HeaderCard'
+import './EmployeeDetails.css'
+import HeaderButton from '../../components/HeaderButton/HeaderButton'
 
 
 const EmployeeDetails = () => {
-    const [search, setSearch] = useSearchParams()
-    const { id } = useParams();
-    const [value, setValue] = useState('')
-    const [getvalue, Setgetvalue] = useState('')
-    const [key,setKey]=useState('')
 
-    return (
-        <div className="emp-employee-details">
-            <h1>Employee Details</h1>
-            <div className="emp-details-card">
-                <p><strong>Employee ID:</strong>{id}</p>
+    
+  return (
+    <div className="emp-details-container">
+   <div className="emp-details-header">
+     <HeaderCard title='Employee Details' endAdornment={<HeaderButton label={"Edit"}/>}/>
+   </div>
+   <div className="emp-info-container">
+    <div className="emp-info">
+      
+    </div>
+   </div>
+    </div>
+  )
+}
 
-                <input type="text" value={key} onChange={(e) => {
-                    setKey(e.target.value)
-                }} />
-
-                <Button variant="primary" onClick={() => {
-                    Setgetvalue(search.get(key)|| "no key")
-                }}>Get</Button>
-                <label htmlFor="">Search Params : {getvalue}</label>
-
-
-                <input type="text" value={key} onChange={(e) => {
-                    setKey(e.target.value)
-                }} />
-                <input type="text" value={value} onChange={(e) => {
-                    setValue(e.target.value)
-                }} />
-                <Button variant="primary" onClick={() => {
-                    
-                    setSearch(new URLSearchParams(`?${key}=${value}`))
-                }}>Set</Button>
-
-
-
-
-
-            </div>
-        </div>
-    );
-};
-
-export default EmployeeDetails;
+export default EmployeeDetails

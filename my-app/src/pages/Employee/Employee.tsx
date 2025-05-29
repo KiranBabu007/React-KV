@@ -2,6 +2,7 @@ import React from "react";
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import "./Employee.css";
 import DetailCard from "../../components/DetailCard/DetailCard";
+import HeaderButton from "../../components/HeaderButton/HeaderButton";
 
 interface EmpDetails {
   name: string;
@@ -102,9 +103,7 @@ const Employee = () => {
                   </select>
                 </div>
 
-                <button className="create-button">
-                  <span>+</span> Create Employee
-                </button>
+                <HeaderButton label={"Create Employee"} />
               </div>
             }
           />

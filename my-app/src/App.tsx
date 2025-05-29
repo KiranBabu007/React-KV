@@ -1,5 +1,6 @@
 import Counter from "./components/Counter/Counter";
 import CreateEmployee from "./pages/CreateEmployee/CreateEmployee";
+import EditEmployee from "./pages/EditEmployee/EditEmployee";
 import Employee from "./pages/Employee/Employee";
 import EmployeeDetails from "./pages/EmployeeDetails/EmployeeDetails";
 import Layout from "./pages/Layout";
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
       {
         path:":id",
         element:<EmployeeDetails />
+      },{
+        path:"edit",
+        element:<EditEmployee/>
       }
     ],
   },

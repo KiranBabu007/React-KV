@@ -1,17 +1,17 @@
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import Button from "../../components/Button/Button";
-import "./CreateEmployee.css";
+import "./EditEmployee.css"
 import UserInput from "../../components/UserInput/UserInput";
 import SelectInput from "../../components/SelectInput/SelectInput";
 import { useNavigate } from "react-router-dom";
 
-const CreateEmployee = () => {
+const EditEmployee = () => {
   const navigate = useNavigate();
 
   return (
     <div className="main-create-emp">
       <div className="header-container">
-        <HeaderCard title="Create Employee" />
+        <HeaderCard title="Edit Employee" />
       </div>
       <div className="right-card">
         <form className="details-card">
@@ -59,4 +59,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default EditEmployee;

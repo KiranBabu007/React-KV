@@ -5,7 +5,7 @@
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FAFAFA;
-   margin-top: 110px;
+    margin-top: 110px;
     
    
 }
@@ -21,7 +21,7 @@
     justify-content: flex-start;
     gap:20px;
     padding:20px;
-    margin-left:20px;
+    
     box-shadow: black;
     font-weight: 200px;
 }
@@ -54,6 +54,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    
     margin:30px;
 }
 

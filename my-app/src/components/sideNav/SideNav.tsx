@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SideNav.css";
 
 const SideNav = () => {
@@ -10,8 +11,20 @@ const SideNav = () => {
       <div className="sidenav-btn-container"> 
         <div className="emp-button">
           <img src="/icon.svg" alt="" />
-          <a>Employee List</a>
+          <Link to="/employee" >Employee List</Link>
         </div>
+
+        <div className="emp-button">
+          <img src="/icon.svg" alt="" />
+          <Link to="/employee/create" >Create Employee</Link>
+        </div>
+
+        <div className="emp-button">
+          <img src="/icon.svg" alt="" />
+          <Link to="/employee/edit" >Edit Employee</Link>
+        </div>
+
+        
       </div>
     </div>
   );

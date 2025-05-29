@@ -1,0 +1,31 @@
+.header-btn-container{
+    display: flex;
+    gap:10px
+}
+
+.header-btn-container button{
+    border: none;
+    background-color: #03AEEE;
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.header-btn-container span{
+   
+    border: none;
+    width: auto;
+    padding: 20px;
+    
+    background-color: #5ccbf338;
+    padding-left:80px;
+    padding-right:30px;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+.edit-icn{
+    color: white;
+    font-size: 30px;
+}
