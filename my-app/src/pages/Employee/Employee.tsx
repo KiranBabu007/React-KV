@@ -5,90 +5,9 @@ import DetailCard from "../../components/DetailCard/DetailCard";
 import HeaderButton from "../../components/HeaderButton/HeaderButton";
 import { useNavigate } from "react-router-dom";
 import Popup from "../../components/Popup/Popup";
+import { data } from "../../data/empdetails";
 
-interface EmpDetails {
-  name: string;
-  emp_id: string;
-  Joining_date: string;
-  Role: string;
-  Status: string;
-  Experience: string;
-}
 
-const data: EmpDetails[] = [
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Inactive",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Probation",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-  {
-    name: "Jithin",
-    emp_id: "123",
-    Joining_date: "2021.05.04",
-    Role: "Developer",
-    Status: "Active",
-    Experience: "6",
-  },
-];
 
 const Employee = () => {
 

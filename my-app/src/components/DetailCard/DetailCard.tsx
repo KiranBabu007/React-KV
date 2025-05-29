@@ -38,7 +38,8 @@ const DetailCard = ({
         <span>{data.Experience} Years</span>
         <div>
           <RiDeleteBin6Line
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               if (setPopup) setPopup(true);
             }}
             className="dlt-icon"
