@@ -1,3 +1,4 @@
+import { Provider } from "react-redux";
 import Counter from "./components/Counter/Counter";
 import CreateEmployee from "./pages/CreateEmployee/CreateEmployee";
 import EditEmployee from "./pages/EditEmployee/EditEmployee";
@@ -6,6 +7,7 @@ import EmployeeDetails from "./pages/EmployeeDetails/EmployeeDetails";
 import Layout from "./pages/Layout";
 import Login from "./pages/login/Login";
 import NotFound from "./pages/NotFound/NotFound";
+import store from "./store/store"
 import UncontrolledLogin from "./pages/uncontrolledLogin/UncontrolledLogin";
 import {
   createBrowserRouter,
@@ -55,7 +57,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
+    
     </>
   );
 }

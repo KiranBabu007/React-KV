@@ -2,23 +2,17 @@ import { MdModeEditOutline, MdOutlineDeleteForever } from "react-icons/md";
 import "./DetailCard.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import type { Employee } from "../../store/employee/employee.types";
 
 
 
-interface EmpDetails {
-  name: string;
-  emp_id: string;
-  Joining_date: string;
-  Role: string;
-  Status: string;
-  Experience: string;
-}
+
 
 const DetailCard = ({
   data,
   setPopup,
 }: {
-  data: EmpDetails;
+  data: Employee;
   setPopup?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
@@ -28,18 +22,18 @@ const DetailCard = ({
     <div className="detailcard-container">
       <div
         onClick={() => {
-          navigate(`/employee/${data.emp_id}`);
+          navigate(`/employee/${data.employeeId}`);
         }}
         className="detailcard"
       >
         <span>{data.name}</span>
-        <span>{data.emp_id}</span>
-        <span>{data.Joining_date}</span>
-        <span>{data.Role}</span>
-        <span className={`sts-btn status-btn-${data.Status.toLowerCase()}`}>
-          {data.Status}
+        <span>{data.employeeId}</span>
+        <span>{data.dateOfJoining}</span>
+        <span>{data.role}</span>
+        <span className={`sts-btn status-btn-${data.status.toLowerCase()}`}>
+          {data.status}
         </span>
-        <span>{data.Experience} Years</span>
+        <span>{data.experience} Years</span>
         <div>
           <RiDeleteBin6Line
             onClick={(e) => {
@@ -51,7 +45,7 @@ const DetailCard = ({
           <MdModeEditOutline
             onClick={(e) => {
               e.stopPropagation()
-              navigate(`/employee/edit/${data.emp_id}`);
+              navigate(`/employee/edit/${data.employeeId}`);
             }}
             className="edit-icon"
           />{" "}

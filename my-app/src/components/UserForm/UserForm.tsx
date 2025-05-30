@@ -2,50 +2,50 @@ import React from 'react'
 import UserInput from '../UserInput/UserInput'
 import SelectInput from '../SelectInput/SelectInput'
 import { useParams } from 'react-router-dom'
+import type { Address } from '../../store/employee/employee.types';
 
 interface empData {
-  employeeName: string,
-  employeeId:string
-    joiningDate:string,
-    experience:string,
-    age:string,
-    email:string,
-    password:string,
-    department:string,
-    role:string,
-    status:string,
-    houseno:string
-    line1:string
-    line2:string
-   
+    employeeId: string;
+    email: string;
+    name: string;
+    age: string;
+    password: string;
+    role: string;
+    dateOfJoining: string;
+    experience: string;
+    status: string;
+    department:string
+    address:Address
 }
 
-const UserForm = ({values,onChange}:{values:empData,onChange:(field:string,value:string)=>void}) => {
+     
+
+const UserForm = ({values,onChange,onAddressChange}:{values:empData,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void}) => {
     const isEdit= window.location.href.includes("edit") 
   const {id}=useParams()
   return (
   <form className="details-card">
           <UserInput
            onChange={(e)=>{
-            onChange("employeeName",e.target.value)
+            onChange("name",e.target.value)
            }}
             type="text"
-            value={values.employeeName}
+            value={values.name}
             label="Employee Name"
             placeholder="Employee Name"
           />
           <UserInput
           onChange={(e)=>{
-            onChange("joiningDate",e.target.value)
+            onChange("dateOfJoining",e.target.value)
            }}
             type="date"
-            value={values.joiningDate}
+            value={values.dateOfJoining}
             label="Joining Date"
             placeholder="Joining Date"
           />
           <UserInput  onChange={(e)=>{
             onChange("experience",e.target.value)
-           }} type="text" value={values.experience} label="Experience (yrs)" placeholder="0" />
+           }} type="number" value={values.experience} label="Experience (yrs)" placeholder="0" />
               <UserInput
             type="number"
              onChange={(e)=>{
@@ -79,7 +79,7 @@ const UserForm = ({values,onChange}:{values:empData,onChange:(field:string,value
             onChange("department",e.target.value)
            }}
             value={values.department}
-            options={["Marketingr", "Finance"]}
+            options={["Product","Marketing", "Finance"]}
             name="department"
             
           />
@@ -104,14 +104,17 @@ const UserForm = ({values,onChange}:{values:empData,onChange:(field:string,value
           <div className="details">
             <label htmlFor="address">Address</label>
             <input  onChange={(e)=>{
-            onChange("houseno",e.target.value)
-           }} value={values.houseno} type="text" id="houseno" placeholder="Flat No / House No" />
+            onAddressChange("houseNo",e.target.value)
+           }} value={values.address.houseNo} type="text" id="houseno" placeholder="Flat No / House No" />
             <input  onChange={(e)=>{
-            onChange("line1",e.target.value)
-           }} value={values.line1} type="text" id="line1" placeholder="Address Line 1" />
+             onAddressChange("line1",e.target.value)
+           }} value={values.address.line1} type="text" id="line1" placeholder="Address Line 1" />
             <input  onChange={(e)=>{
-            onChange("line2",e.target.value)
-           }} value={values.line2}  type="text" id="line2" placeholder="Address Line 2" />
+             onAddressChange("line2",e.target.value)
+           }} value={values.address.line2}  type="text" id="line2" placeholder="Address Line 2" />
+           <input  onChange={(e)=>{
+             onAddressChange("pincode",e.target.value)
+           }} value={values.address.pincode}  type="number" id="pincode" placeholder="Pincode" />
           </div>
           
           <UserInput

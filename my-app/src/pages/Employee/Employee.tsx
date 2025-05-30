@@ -5,8 +5,10 @@ import "./Employee.css";
 import HeaderButton from "../../components/HeaderButton/HeaderButton";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Popup from "../../components/Popup/Popup";
-import { data } from "../../data/empdetails";
+
 import { lazy } from 'react';
+import { useSelector } from "react-redux";
+import { type Employee, type EmployeeState } from "../../store/employee/employee.types";
 
 const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 
@@ -14,16 +16,23 @@ const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 
 const Employee = () => {
 
-
+  
   const [popup,setPopup]=useState(false)
   const [query,setQuery]=useSearchParams()
-  const [status,setStatus]=useState('All')
+  
+  const data:Employee[]=useSelector(state=>state.employees)
+  console.log(data)
+
   const navigate=useNavigate()
+
+  
+
+  const status=query.get("status") || "All"
   
   const filteredData = 
     status == "All"
       ? data
-      : data.filter((data) => data.Status === status)
+      : data.filter((data) => data.status === status)
 
   return (
       <div className="main-emp">
@@ -36,8 +45,8 @@ const Employee = () => {
               <div className="employee-functions">
                 <label>Filter By</label>
                 <div className="status-container">
-                  <select value={status} onChange={(e)=>{
-                      setStatus(e.target.value)
+                  <select  value={status} onChange={(e)=>{
+                      setQuery({status:e.target.value})
 
                   }} className="status-select" >
                     <option value="All">All</option>

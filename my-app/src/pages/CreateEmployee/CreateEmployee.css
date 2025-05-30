@@ -38,7 +38,7 @@
 .details input, 
 .details select {
     display: block;
-    margin-top: 20px;
+    
     box-shadow: black;
     border: .5px solid lightgray;
     border-radius: 8px;
@@ -54,6 +54,8 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    
     margin:10px;
 }
 
