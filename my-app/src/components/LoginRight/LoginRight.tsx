@@ -44,9 +44,9 @@ const LoginRight = () => {
   }, []);
 
   const handleClick=()=>{
-    if (name==password){
+    if (name==password && name.length>0 && password.length>0){
       localStorage.setItem("loggedIn","true")
-      navigate("/employee/create")
+      navigate("/employee")
     }
   }
 

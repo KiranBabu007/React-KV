@@ -3,6 +3,8 @@ import "./DetailCard.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
+
+
 interface EmpDetails {
   name: string;
   emp_id: string;
@@ -20,7 +22,9 @@ const DetailCard = ({
   setPopup?: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
+   
   return (
+
     <div className="detailcard-container">
       <div
         onClick={() => {

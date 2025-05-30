@@ -11,7 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 const EmployeeDetails = () => {
   const {id}=useParams()
   const navigate=useNavigate()
-
+  
   const emp_data=data.find((data)=> data.emp_id == id
   )
     

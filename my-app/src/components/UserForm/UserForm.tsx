@@ -65,7 +65,7 @@ const UserForm = ({values,onChange}:{values:empData,onChange:(field:string,value
             placeholder="Email"
           />
           <UserInput
-            type="type"
+            type="password"
             onChange={(e)=>{
             onChange("password",e.target.value)
            }}
@@ -75,28 +75,45 @@ const UserForm = ({values,onChange}:{values:empData,onChange:(field:string,value
           />
           <SelectInput
             label="Department"
+             onChange={(e)=>{
+            onChange("department",e.target.value)
+           }}
             value={values.department}
             options={["Marketingr", "Finance"]}
             name="department"
+            
           />
           <SelectInput
             label="role"
+             onChange={(e)=>{
+            onChange("role",e.target.value)
+           }}
             value={values.role}
             options={["QA Engineer", "FrontEnd Engineer"]}
             name="role"
           />
           <SelectInput
             label="Status"
+             onChange={(e)=>{
+            onChange("status",e.target.value)
+           }}
             value={values.status}
             options={["Active","Inactive","Probation"]}
             name="Status"
           />
           <div className="details">
             <label htmlFor="address">Address</label>
-            <input value={values.houseno} type="text" id="houseno" placeholder="Flat No / House No" />
-            <input value={values.line1} type="text" id="line1" placeholder="Address Line 1" />
-            <input value={values.line2}  type="text" id="line2" placeholder="Address Line 2" />
+            <input  onChange={(e)=>{
+            onChange("houseno",e.target.value)
+           }} value={values.houseno} type="text" id="houseno" placeholder="Flat No / House No" />
+            <input  onChange={(e)=>{
+            onChange("line1",e.target.value)
+           }} value={values.line1} type="text" id="line1" placeholder="Address Line 1" />
+            <input  onChange={(e)=>{
+            onChange("line2",e.target.value)
+           }} value={values.line2}  type="text" id="line2" placeholder="Address Line 2" />
           </div>
+          
           <UserInput
             type="text"
             onChange={(e)=>{

@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import "./Employee.css";
-import DetailCard from "../../components/DetailCard/DetailCard";
+
 import HeaderButton from "../../components/HeaderButton/HeaderButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Popup from "../../components/Popup/Popup";
 import { data } from "../../data/empdetails";
+import { lazy } from 'react';
+
+const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 
 
 
 const Employee = () => {
 
-  const [popup,setPopup]=useState(false)
 
+  const [popup,setPopup]=useState(false)
+  const [query,setQuery]=useSearchParams()
+  const [status,setStatus]=useState('All')
   const navigate=useNavigate()
+  
+  const filteredData = 
+    status == "All"
+      ? data
+      : data.filter((data) => data.Status === status)
+
   return (
       <div className="main-emp">
 
@@ -25,8 +36,14 @@ const Employee = () => {
               <div className="employee-functions">
                 <label>Filter By</label>
                 <div className="status-container">
-                  <select className="status-select" defaultValue="Status">
-                    <option value="Status">Status </option>
+                  <select value={status} onChange={(e)=>{
+                      setStatus(e.target.value)
+
+                  }} className="status-select" >
+                    <option value="All">All</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">InActive</option>
+                    <option value="Probation">Probation</option>
                   </select>
                 </div>
 
@@ -52,9 +69,13 @@ const Employee = () => {
               </div>
 
               <div className="emp-detail-cards">
-                {
-                  data.map((data)=> <DetailCard  setPopup={setPopup} key={data.emp_id} data={data} />)
-                }
+                <Suspense fallback={<><h2 >Loading list please wait</h2></>}>
+  
+  { 
+                filteredData.map((data, i)=> <DetailCard setPopup={setPopup} key={i} data={data} />)
+              }
+</Suspense>
+              
                 
               </div>
             </div>
