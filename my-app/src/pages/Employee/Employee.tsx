@@ -17,7 +17,7 @@ const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 const Employee = () => {
 
   
-  const [popup,setPopup]=useState(false)
+ 
   const [query,setQuery]=useSearchParams()
   
   const data:Employee[]=useSelector(state=>state.employees)
@@ -37,7 +37,7 @@ const Employee = () => {
   return (
       <div className="main-emp">
 
-        { popup && <Popup setPopup={setPopup} />}
+        
         <div className="header-container">
           <HeaderCard
             title="Employee"
@@ -81,7 +81,7 @@ const Employee = () => {
                 <Suspense fallback={<><h2 >Loading list please wait</h2></>}>
   
   { 
-                filteredData.map((data, i)=> <DetailCard setPopup={setPopup} key={i} data={data} />)
+                filteredData.map((data, i)=> <DetailCard  key={i} data={data} />)
               }
 </Suspense>
               

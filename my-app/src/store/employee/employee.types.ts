@@ -65,7 +65,7 @@ export interface CreateEmployeeAction{
 
 export interface DeleteEmployeeAction {
   type: typeof EMPLOYEE_ACTION_TYPES.DELETE;
-  payload: string; // employee id
+  payload: string; 
 }
 
 export interface UpdateEmployeeAction {
@@ -73,4 +73,4 @@ export interface UpdateEmployeeAction {
   payload: Employee;
 }
 
-export type EmployeeAction = CreateEmployeeAction|DeleteEmployeeAction | UpdateEmployeeAction;
+export type EmployeeAction = CreateEmployeeAction | DeleteEmployeeAction | UpdateEmployeeAction;

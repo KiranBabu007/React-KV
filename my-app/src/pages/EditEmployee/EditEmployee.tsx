@@ -6,6 +6,8 @@ import SelectInput from "../../components/SelectInput/SelectInput";
 import { useNavigate, useParams } from "react-router-dom";
 import UserForm from "../../components/UserForm/UserForm";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { EMPLOYEE_ACTION_TYPES } from "../../store/employee/employee.types";
 
 const EditEmployee = () => {
   
@@ -13,8 +15,8 @@ const EditEmployee = () => {
   const {id}=useParams()
 
   const [values,setValues]=useState({
-      employeeName:"",
-      joiningDate:"",
+      name:"",
+      dateOfJoining:"",
       experience:"",
       age:"",
       email:"",
@@ -22,14 +24,17 @@ const EditEmployee = () => {
       department:"",
       role:"",
       status:"",
-      employeeId:"",
+      employeeId:id,
       houseno:"",
-     line1:"",
-     line2:"",
-     pincode:""
+      address:{
+        line1:"",
+        line2:"",
+        houseNo:"",
+        pincode:""
+      }
     })
 
-
+    const dispatch=useDispatch()
   return (
     <div className="main-create-emp">
       <div className="header-container">
@@ -39,9 +44,13 @@ const EditEmployee = () => {
         <UserForm values={values}
         onChange={(field,value)=>{
         setValues({...values,[field]:value})
-        }}  />
+        }} onAddressChange={(field,value)=>{
+          setValues({...values,address:{...values.address,[field]:value}})
+        }} />
         <div className="btns">
-          <Button variant="primary">Create</Button>
+          <Button onClick={()=>{
+            dispatch({type:EMPLOYEE_ACTION_TYPES.UPDATE,payload:values})
+          }} variant="primary">Edit</Button>
           <Button variant="secondary">Cancel</Button>
         </div>
 

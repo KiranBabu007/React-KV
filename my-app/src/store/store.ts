@@ -1,8 +1,12 @@
-import { legacy_createStore as createStore } from 'redux';
-// import rootReducer from './rootReducer'
-import employeeReducer from './employee/employeeReducer';
+import { legacy_createStore as createStore, applyMiddleware } from "redux";
 
+import logger from "redux-logger";
+import employeeReducer from "./employee/employeeReducer";
 
-const store = createStore(employeeReducer)
+const store = createStore(
+  employeeReducer,
+  undefined,
+  applyMiddleware(logger)
+);
 
 export default store
