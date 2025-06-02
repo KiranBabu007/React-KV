@@ -7,11 +7,12 @@
  */
 
 export interface Address {
-  houseNo: string;
+  houseNo: number;  // Changed from string to number
   line1: string;
   line2: string;
-  pincode: string;
+  pincode: number;  // Changed from string to number
 }
+
 
 export const EmployeeRole = {
   UI: "UI",
@@ -32,17 +33,18 @@ export type Status = (typeof EmployeeStatus)[keyof typeof EmployeeStatus];
 
 export interface Employee {
   id?:string
+  departmentId:number,
   employeeId: string;
   email: string;
   name: string;
-  age: string;
+  age: number;
   address: Address;
   password: string;
   role: Role;
   dateOfJoining: string;
   experience: number;
   status: Status;
-  department?: number | string;
+  department?: string;
 }
 
 export const EMPLOYEE_ACTION_TYPES = {

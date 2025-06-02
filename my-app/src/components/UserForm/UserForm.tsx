@@ -13,7 +13,6 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
     const isEdit= window.location.href.includes("edit") 
   const {id}=useParams()
   const {data}=useGetDepartmentListQuery({})
-  console.log(data)
 
   return (
   <form className="details-card">
@@ -68,7 +67,11 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
           {data && <SelectInput
             label="Department"
              onChange={(e)=>{
-            onChange("department",e.target.value)
+            const selectedOption = data.find(dept => dept.name === e.target.value);
+    if (selectedOption) {
+      onChange("departmentId", selectedOption.id);
+      
+    }
            }}
             value={values.department}
             options={data.map((dept)=>({

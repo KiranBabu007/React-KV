@@ -3,34 +3,35 @@ import Button from "../../components/Button/Button";
 import "./CreateEmployee.css";
 import { useState } from "react";
 import UserForm from "../../components/UserForm/UserForm";
-import { EMPLOYEE_ACTION_TYPES, EmployeeRole, EmployeeStatus, type EmployeeState } from "../../store/employee/employee.types";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { addEmployee } from "../../store/employee/employeeSlice";
+import {  EmployeeRole, EmployeeStatus } from "../../store/employee/employee.types";
+import { useAddEmployeeMutation } from "../../api-services/employees/employee.api";
+
 
 const CreateEmployee = () => {
-  const dispatch=useAppDispatch()
+  
+  const [create]=useAddEmployeeMutation()
 
   const [values,setValues]=useState({
     name:"",
     dateOfJoining:"",
     experience:Number(0),
-    age:"",
+    age:0,
     email:"",
     password:"",
-    department:"",
     role:EmployeeRole.DEVELOPER,
     status:EmployeeStatus.ACTIVE,
+    departmentId:0,
     employeeId:"",
     address:{
-      houseNo: "",
+      houseNo: Number(""),
   line1: "",
   line2: "",
-  pincode: ""
+  pincode:Number("") ,
+  
     }
    
   })
 
- 
 
   return (
     <div className="main-create-emp">
@@ -46,7 +47,14 @@ const CreateEmployee = () => {
         }
         } />
         <div className="btns">
-          <Button variant="primary" onClick={()=>{dispatch(addEmployee(values)); console.log("created")}}>Create</Button>
+          <Button variant="primary" onClick={async()=>{  const processedData = {
+    ...values,
+    departmentId: Number(values.departmentId),
+    experience: Number(values.experience),
+    age: Number(values.age),
+    
+  }; 
+  await create(processedData) } }>Create</Button>
           <Button variant="secondary">Cancel</Button>
           
         </div>
