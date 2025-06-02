@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Navigate, Outlet, useNavigate } from "react-router-dom"
 import SideNav from "../components/sideNav/SideNav"
 import "./Layout.css"
 import Button from "../components/Button/Button";
@@ -9,12 +9,14 @@ import Button from "../components/Button/Button";
 const Layout = () => {
 
   const isLoggedIn = () => {
-    return localStorage.getItem("loggedIn") == "true";
+    return localStorage.getItem("loggedIn") === "true";
   };
   const navigate = useNavigate()
 
-  if (!isLoggedIn) {
-    navigate("/login")
+  if (!isLoggedIn()) {
+    return <Navigate to="/login"/>
+ 
+
 
   }
   return (
@@ -23,6 +25,7 @@ const Layout = () => {
        <div className="logout-btn">
         <Button onClick={()=>{
           localStorage.setItem("loggedIn","false")
+          localStorage.removeItem("token")
           navigate("/login")
         }} variant="primary">Logout</Button>
        </div>

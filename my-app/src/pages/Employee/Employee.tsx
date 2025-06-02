@@ -4,11 +4,9 @@ import "./Employee.css";
 
 import HeaderButton from "../../components/HeaderButton/HeaderButton";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import Popup from "../../components/Popup/Popup";
-
 import { lazy } from 'react';
-import { useSelector } from "react-redux";
-import { type Employee, type EmployeeState } from "../../store/employee/employee.types";
+import { type Employee } from "../../store/employee/employee.types";
+import { useGetEmployeeListQuery } from "../../api-services/employees/employee.api";
 
 const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 
@@ -17,22 +15,23 @@ const DetailCard= lazy(() => import("../../components/DetailCard/DetailCard"));
 const Employee = () => {
 
   
- 
+
   const [query,setQuery]=useSearchParams()
   
-  const data:Employee[]=useSelector(state=>state.employees)
-  console.log(data)
+
+ 
 
   const navigate=useNavigate()
 
-  
+  const {data}=useGetEmployeeListQuery({})
+
 
   const status=query.get("status") || "All"
   
   const filteredData = 
     status == "All"
       ? data
-      : data.filter((data) => data.status === status)
+      : data.filter((emp:Employee) => emp.status === status)
 
   return (
       <div className="main-emp">
@@ -80,8 +79,8 @@ const Employee = () => {
               <div className="emp-detail-cards">
                 <Suspense fallback={<><h2 >Loading list please wait</h2></>}>
   
-  { 
-                filteredData.map((data, i)=> <DetailCard  key={i} data={data} />)
+  { data &&
+                filteredData.map((emp:Employee,i:number)=> <DetailCard  key={i} data={emp} />)
               }
 </Suspense>
               

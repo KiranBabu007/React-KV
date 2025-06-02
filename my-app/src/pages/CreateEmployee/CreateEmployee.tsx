@@ -1,28 +1,25 @@
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import Button from "../../components/Button/Button";
 import "./CreateEmployee.css";
-import UserInput from "../../components/UserInput/UserInput";
-import SelectInput from "../../components/SelectInput/SelectInput";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import UserForm from "../../components/UserForm/UserForm";
-import { useDispatch, useSelector } from "react-redux";
-import { EMPLOYEE_ACTION_TYPES, type EmployeeState } from "../../store/employee/employee.types";
+import { EMPLOYEE_ACTION_TYPES, EmployeeRole, EmployeeStatus, type EmployeeState } from "../../store/employee/employee.types";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { addEmployee } from "../../store/employee/employeeSlice";
 
 const CreateEmployee = () => {
-  const state=useSelector(state=>state)
-  const dispatch=useDispatch()
+  const dispatch=useAppDispatch()
 
   const [values,setValues]=useState({
     name:"",
     dateOfJoining:"",
-    experience:"",
+    experience:Number(0),
     age:"",
     email:"",
     password:"",
     department:"",
-    role:"",
-    status:"",
+    role:EmployeeRole.DEVELOPER,
+    status:EmployeeStatus.ACTIVE,
     employeeId:"",
     address:{
       houseNo: "",
@@ -49,7 +46,7 @@ const CreateEmployee = () => {
         }
         } />
         <div className="btns">
-          <Button variant="primary" onClick={()=>{dispatch({type:EMPLOYEE_ACTION_TYPES.ADD,payload:values}); console.log("Created")}}>Create</Button>
+          <Button variant="primary" onClick={()=>{dispatch(addEmployee(values)); console.log("created")}}>Create</Button>
           <Button variant="secondary" onClick={()=>{
             console.log(state)
           }}>Cancel</Button>

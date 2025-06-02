@@ -5,12 +5,15 @@ import useMousePosition from "../../hooks/useMousePosition";
 import LoginInput from "../LoginInput/LoginInput";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../api-services/auth/login.api";
 
 const LoginRight = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [uexceeded, setExceededu] = useState(false);
   const [pexceeded, setExceededp] = useState(false);
+  const [error,setError]=useState("")
+  const [login,{isLoading}]=useLoginMutation()
 
   const userRef = useRef<HTMLInputElement>(null);
 
@@ -43,11 +46,25 @@ const LoginRight = () => {
     localStorage.setItem("loggedIn","false")
   }, []);
 
-  const handleClick=()=>{
-    if (name==password && name.length>0 && password.length>0){
-      localStorage.setItem("loggedIn","true")
-      navigate("/employee")
-    }
+  const handleClick=async()=>{
+
+     login({email:name,password:password}).unwrap()
+     .then((response)=>{
+      if(response.accessToken){
+        localStorage.setItem("token",response.accessToken) 
+        localStorage.setItem("loggedIn","true")
+       navigate('/employee')
+      }
+       
+    }).catch((error)=>{
+       setError(error.data.message)
+       console.log(error)
+    })
+
+      
+   
+   
+ 
   }
 
   return (
@@ -99,7 +116,7 @@ const LoginRight = () => {
         </div>
 
         <div>
-          <Button onClick={handleClick} variant="primary-login">Login</Button>
+          <Button onClick={handleClick} disabled={isLoading} variant="primary-login">Login</Button>
         </div>
       </div>
     </div>

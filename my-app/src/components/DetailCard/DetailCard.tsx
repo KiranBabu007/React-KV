@@ -5,11 +5,7 @@ import { useNavigate } from "react-router-dom";
 import type { Employee } from "../../store/employee/employee.types";
 import { useState } from "react";
 import Popup from "../Popup/Popup";
-import { useDispatch } from "react-redux";
-
-
-
-
+import { useDeleteEmployeeMutation } from "../../api-services/employees/employee.api";
 
 
 const DetailCard = ({
@@ -21,7 +17,7 @@ const DetailCard = ({
 }) => {
   const navigate = useNavigate();
   
-  
+    const {}=useDeleteEmployeeMutation()
     const [popup,setPopup]=useState(false)
   return (
 
@@ -30,7 +26,7 @@ const DetailCard = ({
      
       <div
         onClick={() => {
-          navigate(`/employee/${data.employeeId}`);
+          navigate(`/employee/${data.id}`);
         }}
         className="detailcard"
       >
@@ -55,7 +51,7 @@ const DetailCard = ({
           <MdModeEditOutline
             onClick={(e) => {
               e.stopPropagation()
-              navigate(`/employee/edit/${data.employeeId}`);
+              navigate(`/employee/edit/${data.id}`);
             }}
             className="edit-icon"
           />{" "}

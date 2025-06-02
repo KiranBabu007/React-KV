@@ -31,17 +31,18 @@ export const EmployeeStatus = {
 export type Status = (typeof EmployeeStatus)[keyof typeof EmployeeStatus];
 
 export interface Employee {
+  id?:string
   employeeId: string;
   email: string;
   name: string;
-  age: number;
+  age: string;
   address: Address;
   password: string;
   role: Role;
   dateOfJoining: string;
   experience: number;
   status: Status;
-  departmentId: number | string;
+  department?: number | string;
 }
 
 export const EMPLOYEE_ACTION_TYPES = {

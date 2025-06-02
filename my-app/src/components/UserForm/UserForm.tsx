@@ -2,7 +2,7 @@ import React from 'react'
 import UserInput from '../UserInput/UserInput'
 import SelectInput from '../SelectInput/SelectInput'
 import { useParams } from 'react-router-dom'
-import type { Address } from '../../store/employee/employee.types';
+import type { Address, Employee } from '../../store/employee/employee.types';
 
 interface empData {
     employeeId: string;
@@ -12,7 +12,7 @@ interface empData {
     password: string;
     role: string;
     dateOfJoining: string;
-    experience: string;
+    experience: number;
     status: string;
     department:string
     address:Address
@@ -20,7 +20,7 @@ interface empData {
 
      
 
-const UserForm = ({values,onChange,onAddressChange}:{values:empData,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void}) => {
+const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void,disable?:boolean}) => {
     const isEdit= window.location.href.includes("edit") 
   const {id}=useParams()
   return (
@@ -124,8 +124,8 @@ const UserForm = ({values,onChange,onAddressChange}:{values:empData,onChange:(fi
            }}
             label="Employee ID"
             value={values.employeeId}
-            placeholder={isEdit ? `${id}`: "Employee ID"}
-            disable={isEdit}
+            placeholder={disable ? `${values.employeeId}`: "Employee ID"}
+            disable={disable}
             className={isEdit ? "edit":""}
           />
         </form>

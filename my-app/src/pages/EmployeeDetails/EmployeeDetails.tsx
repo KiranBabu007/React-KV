@@ -7,13 +7,14 @@ import { data } from '../../data/empdetails'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import type { Employee } from '../../store/employee/employee.types'
+import { useAppSelector } from '../../store/store'
 
 
 
 const EmployeeDetails = () => {
   const {id}=useParams()
   const navigate=useNavigate()
-    const data:Employee[]=useSelector(state=>state.employees)
+    const data:Employee[]=useAppSelector(state=>state.employee.employees)
   
   const emp_data=data.find((data)=> data.employeeId == id
   )

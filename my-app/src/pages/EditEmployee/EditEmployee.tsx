@@ -7,11 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserForm from "../../components/UserForm/UserForm";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { EMPLOYEE_ACTION_TYPES } from "../../store/employee/employee.types";
+import { EMPLOYEE_ACTION_TYPES, EmployeeRole } from "../../store/employee/employee.types";
 
 const EditEmployee = () => {
-  
-  const isEdit= window.location.href.includes("edit") 
   const {id}=useParams()
 
   const [values,setValues]=useState({
@@ -22,9 +20,9 @@ const EditEmployee = () => {
       email:"",
       password:"",
       department:"",
-      role:"",
+      role:EmployeeRole.DEVELOPER,
       status:"",
-      employeeId:id,
+      employeeId:"",
       houseno:"",
       address:{
         line1:"",
@@ -41,7 +39,7 @@ const EditEmployee = () => {
         <HeaderCard title="Edit Employee" />
       </div>
       <div className="right-card">
-        <UserForm values={values}
+        <UserForm disable={true} values={values}
         onChange={(field,value)=>{
         setValues({...values,[field]:value})
         }} onAddressChange={(field,value)=>{
