@@ -2,27 +2,19 @@ import React from 'react'
 import UserInput from '../UserInput/UserInput'
 import SelectInput from '../SelectInput/SelectInput'
 import { useParams } from 'react-router-dom'
-import type { Address, Employee } from '../../store/employee/employee.types';
+import { EmployeeRole, type Address, type Employee } from '../../store/employee/employee.types';
+import { useGetDepartmentListQuery } from '../../api-services/department/department.api';
 
-interface empData {
-    employeeId: string;
-    email: string;
-    name: string;
-    age: string;
-    password: string;
-    role: string;
-    dateOfJoining: string;
-    experience: number;
-    status: string;
-    department:string
-    address:Address
-}
+
 
      
 
 const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void,disable?:boolean}) => {
     const isEdit= window.location.href.includes("edit") 
   const {id}=useParams()
+  const {data}=useGetDepartmentListQuery({})
+  console.log(data)
+
   return (
   <form className="details-card">
           <UserInput
@@ -73,23 +65,31 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
             label="Password"
             placeholder="Password"
           />
-          <SelectInput
+          {data && <SelectInput
             label="Department"
              onChange={(e)=>{
             onChange("department",e.target.value)
            }}
             value={values.department}
-            options={["Product","Marketing", "Finance"]}
+            options={data.map((dept)=>({
+              id:dept.id,
+              value:dept.name
+            }))}
             name="department"
             
-          />
+          />}
           <SelectInput
             label="role"
              onChange={(e)=>{
             onChange("role",e.target.value)
            }}
             value={values.role}
-            options={["QA Engineer", "FrontEnd Engineer"]}
+            options={[
+              { id: "UI", value: "UI" },
+              { id: "UX", value: "UX" },
+              { id: "DEVELOPER", value: "DEVELOPER" },
+              { id: "HR", value: "HR" }
+            ]}
             name="role"
           />
           <SelectInput
@@ -98,9 +98,14 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
             onChange("status",e.target.value)
            }}
             value={values.status}
-            options={["Active","Inactive","Probation"]}
+            options={[
+              { id: "ACTIVE", value: "ACTIVE" },
+              { id: "INACTIVE", value: "INACTIVE" },
+              { id: "PROBATION", value: "PROBATION" }
+            ]}
             name="Status"
           />
+
           <div className="details">
             <label htmlFor="address">Address</label>
             <input  onChange={(e)=>{

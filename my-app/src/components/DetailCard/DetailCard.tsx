@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import type { Employee } from "../../store/employee/employee.types";
 import { useState } from "react";
 import Popup from "../Popup/Popup";
-import { useDeleteEmployeeMutation } from "../../api-services/employees/employee.api";
 
 
 const DetailCard = ({
@@ -17,12 +16,13 @@ const DetailCard = ({
 }) => {
   const navigate = useNavigate();
   
-    const {}=useDeleteEmployeeMutation()
+   
     const [popup,setPopup]=useState(false)
+   
   return (
 
     <div className="detailcard-container">
-     {popup && <Popup setPopup={setPopup} id={data.employeeId} />}
+     {popup &&  <Popup setPopup={setPopup} id={data.id} />}
      
       <div
         onClick={() => {
@@ -45,6 +45,7 @@ const DetailCard = ({
             onClick={(e) => {
               e.stopPropagation()
                setPopup(true);
+              
             }}
             className="dlt-icon"
           />

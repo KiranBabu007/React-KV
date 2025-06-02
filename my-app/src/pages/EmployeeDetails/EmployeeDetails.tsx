@@ -8,16 +8,17 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import type { Employee } from '../../store/employee/employee.types'
 import { useAppSelector } from '../../store/store'
+import { useGetEmployeeQuery } from '../../api-services/employees/employee.api'
 
 
 
 const EmployeeDetails = () => {
   const {id}=useParams()
+  const {data}=useGetEmployeeQuery({id:id})
+  console.log(data)
   const navigate=useNavigate()
-    const data:Employee[]=useAppSelector(state=>state.employee.employees)
-  
-  const emp_data=data.find((data)=> data.employeeId == id
-  )
+
+  const emp_data=data
     
   return (
     <div className="emp-details-container">

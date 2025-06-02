@@ -12,8 +12,11 @@ export const employeeApi= employeeBaseApi.injectEndpoints({
                 method:'DELETE'
             }),
             invalidatesTags:['EMPLOYEES']
-        })
+        }),
+        getEmployee:builder.query({
+            query:({id})=>`/employee/${id}`
+        }),
     })
 })
 
-export const {useDeleteEmployeeMutation,useGetEmployeeListQuery} = employeeApi
+export const {useDeleteEmployeeMutation,useGetEmployeeListQuery,useGetEmployeeQuery} = employeeApi

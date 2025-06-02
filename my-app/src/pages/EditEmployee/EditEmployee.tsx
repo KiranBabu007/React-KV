@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserForm from "../../components/UserForm/UserForm";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { EMPLOYEE_ACTION_TYPES, EmployeeRole } from "../../store/employee/employee.types";
+import { EMPLOYEE_ACTION_TYPES, EmployeeRole, EmployeeStatus } from "../../store/employee/employee.types";
 
 const EditEmployee = () => {
   const {id}=useParams()
@@ -15,13 +15,13 @@ const EditEmployee = () => {
   const [values,setValues]=useState({
       name:"",
       dateOfJoining:"",
-      experience:"",
+      experience:0,
       age:"",
       email:"",
       password:"",
       department:"",
       role:EmployeeRole.DEVELOPER,
-      status:"",
+      status:EmployeeStatus.ACTIVE,
       employeeId:"",
       houseno:"",
       address:{

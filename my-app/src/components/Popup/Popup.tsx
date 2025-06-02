@@ -3,15 +3,17 @@ import "./Popup.css"
 import Button from '../Button/Button'
 import { useDispatch } from 'react-redux'
 import { EMPLOYEE_ACTION_TYPES } from '../../store/employee/employee.types'
+import { useDeleteEmployeeMutation } from '../../api-services/employees/employee.api'
 
 interface popupprops{
   setPopup:  React.Dispatch<React.SetStateAction<boolean>>
-  id:string
+  id:string | undefined
 }
 
 const Popup = ({setPopup,id}:popupprops) => {
   
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
+  const  [Delete] = useDeleteEmployeeMutation({})
   return (
     <div className="popup-container">
       <div className="popup-box">
@@ -23,7 +25,8 @@ const Popup = ({setPopup,id}:popupprops) => {
         </div>
         <div className="popup-btns">
           <Button onClick={()=>{
-            dispatch({type:EMPLOYEE_ACTION_TYPES.DELETE,payload:id})
+            // dispatch({type:EMPLOYEE_ACTION_TYPES.DELETE,payload:id})
+            Delete({id:id})
             setPopup(false)
           }} variant={"primary"}>Confirm</Button>
           <Button onClick={()=>{

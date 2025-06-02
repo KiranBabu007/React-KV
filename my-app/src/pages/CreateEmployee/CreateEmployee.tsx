@@ -47,9 +47,7 @@ const CreateEmployee = () => {
         } />
         <div className="btns">
           <Button variant="primary" onClick={()=>{dispatch(addEmployee(values)); console.log("created")}}>Create</Button>
-          <Button variant="secondary" onClick={()=>{
-            console.log(state)
-          }}>Cancel</Button>
+          <Button variant="secondary">Cancel</Button>
           
         </div>
 
