@@ -106,6 +106,14 @@ const EmployeeDetails = () => {
      
         </>
       } />
+      <InfoCard title="Department" children={
+        <>
+        <span className='info-span'>
+         {emp_data?.department?.name}
+        </span>
+     
+        </>
+      } />
       
     </div>
    </div>

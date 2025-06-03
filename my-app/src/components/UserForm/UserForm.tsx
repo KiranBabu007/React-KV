@@ -36,7 +36,7 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
           />
           <UserInput  onChange={(e)=>{
             onChange("experience",e.target.value)
-           }} type="number" value={values.experience} label="Experience (yrs)" placeholder="0" />
+           }} type="number" value={values.experience} label="Experience (yrs)"  />
               <UserInput
             type="number"
              onChange={(e)=>{
