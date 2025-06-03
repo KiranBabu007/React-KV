@@ -2,7 +2,7 @@ import React from 'react'
 import UserInput from '../UserInput/UserInput'
 import SelectInput from '../SelectInput/SelectInput'
 import { useParams } from 'react-router-dom'
-import { EmployeeRole, type Address, type Employee } from '../../store/employee/employee.types';
+import { type Employee } from '../../store/employee/employee.types';
 import { useGetDepartmentListQuery } from '../../api-services/department/department.api';
 
 

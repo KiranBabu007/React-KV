@@ -3,11 +3,7 @@ import HeaderCard from '../../components/HeaderCard/HeaderCard'
 import './EmployeeDetails.css'
 import HeaderButton from '../../components/HeaderButton/HeaderButton'
 import InfoCard from '../../components/InfoCard/InfoCard'
-import { data } from '../../data/empdetails'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import type { Employee } from '../../store/employee/employee.types'
-import { useAppSelector } from '../../store/store'
 import { useGetEmployeeQuery } from '../../api-services/employees/employee.api'
 
 

@@ -50,11 +50,13 @@ const LoginRight = () => {
 
      login({email:name,password:password}).unwrap()
      .then((response)=>{
-      if(response.accessToken){
+      if(!response){
+        throw new Error('Invalid response')
+      }
         localStorage.setItem("token",response.accessToken) 
         localStorage.setItem("loggedIn","true")
        navigate('/employee')
-      }
+      
        
     }).catch((error)=>{
        setError(error.data.message)
@@ -91,7 +93,7 @@ const LoginRight = () => {
             }
           />
 
-          {uexceeded && <p>Username Length Exceeded</p>}
+          {uexceeded && <p>Username must be less than 20 characters</p>}
 
           <LoginInput
             id="password"
