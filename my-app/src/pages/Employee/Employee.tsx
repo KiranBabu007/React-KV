@@ -31,7 +31,7 @@ const Employee = () => {
   const filteredData = 
     status == "All"
       ? data
-      : data.filter((emp:Employee) => emp.status === status)
+      : data.filter((emp:Employee) => emp.status.toLowerCase() === status.toLowerCase())
 
   return (
       <div className="main-emp">

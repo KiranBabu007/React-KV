@@ -33,7 +33,7 @@ const DetailCard = ({
        
         <span>{data.name}</span>
         <span>{data.employeeId}</span>
-        <span>{data.dateOfJoining}</span>
+        <span>{data.dateOfJoining.slice(0,10)}</span>
         <span>{data.role}</span>
        { data.status &&
         <span className={`sts-btn status-btn-${data.status.toLowerCase()}`}>

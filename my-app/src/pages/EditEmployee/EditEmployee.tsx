@@ -43,7 +43,7 @@ const EditEmployee = () => {
     if (existingEmployee) {
       setValues({
         name: existingEmployee.name || "",
-        dateOfJoining: existingEmployee.dateOfJoining || "",
+        dateOfJoining: existingEmployee.dateOfJoining.slice(0,10) || "",
         experience: existingEmployee.experience || 0,
         age: existingEmployee.age || 0,
         email: existingEmployee.email || "",

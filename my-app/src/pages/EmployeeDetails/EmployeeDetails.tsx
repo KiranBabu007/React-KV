@@ -24,7 +24,7 @@ const EmployeeDetails = () => {
     <div className="emp-details-container">
    <div className="emp-details-header">
      <HeaderCard title='Employee Details' endAdornment={<HeaderButton onClick={()=>{
-      navigate(`/employee/edit/${emp_data?.employeeId}`)
+      navigate(`/employee/edit/${data?.id}`)
      }} label={"Edit"}/>}/>
    </div>
    <div className="emp-info-container">
@@ -41,7 +41,7 @@ const EmployeeDetails = () => {
       <InfoCard title="Joining Date" children={
         <>
         <span className='info-span'>
-           {emp_data?.dateOfJoining.toString()}
+           {emp_data?.dateOfJoining.toString().slice(0,10)}
         </span>
         </>
       } />
