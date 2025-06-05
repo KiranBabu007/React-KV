@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import logger from "redux-logger";
 import employeeReducer from "./employee/employeeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import employeeBaseApi from "../api-services/api";
