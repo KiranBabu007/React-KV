@@ -1,23 +1,24 @@
 import HeaderCard from "../../components/HeaderCard/HeaderCard";
 import Button from "../../components/Button/Button";
-import "./EditEmployee.css"
+import "./EditEmployee.css";
 import UserForm from "../../components/UserForm/UserForm";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { EmployeeRole, EmployeeStatus } from "../../store/employee/employee.types";
-import { 
-  useEditEmployeeMutation, 
-  useGetEmployeeQuery
+import {
+  EmployeeRole,
+  EmployeeStatus,
+} from "../../store/employee/employee.types";
+import {
+  useEditEmployeeMutation,
+  useGetEmployeeQuery,
 } from "../../api-services/employees/employee.api";
 
 const EditEmployee = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [editEmployee] = useEditEmployeeMutation();
-  
- 
-  const { data: existingEmployee} = useGetEmployeeQuery({id:id});
 
+  const { data: existingEmployee } = useGetEmployeeQuery({ id: id });
 
   const [values, setValues] = useState({
     name: "",
@@ -35,15 +36,14 @@ const EditEmployee = () => {
       line1: "",
       line2: "",
       pincode: 0,
-    }
+    },
   });
 
-  
   useEffect(() => {
     if (existingEmployee) {
       setValues({
         name: existingEmployee.name || "",
-        dateOfJoining: existingEmployee.dateOfJoining.slice(0,10) || "",
+        dateOfJoining: existingEmployee.dateOfJoining.slice(0, 10) || "",
         experience: existingEmployee.experience || 0,
         age: existingEmployee.age || 0,
         email: existingEmployee.email || "",
@@ -57,14 +57,13 @@ const EditEmployee = () => {
           line1: existingEmployee.address?.line1 || "",
           line2: existingEmployee.address?.line2 || "",
           pincode: existingEmployee.address?.pincode || 0,
-        }
+        },
       });
     }
   }, [existingEmployee]);
 
   const handleEdit = async () => {
     try {
-      
       const processedData = {
         id: id,
         ...values,
@@ -74,20 +73,16 @@ const EditEmployee = () => {
         address: {
           ...values.address,
           houseNo: Number(values.address.houseNo),
-          pincode: Number(values.address.pincode)
-        }
+          pincode: Number(values.address.pincode),
+        },
       };
 
-    
-      console.log(processedData)
+      console.log(processedData);
       await editEmployee(processedData).unwrap();
-      
-      
-      navigate("/employee"); 
-      
+
+      navigate("/employee");
     } catch (error) {
       console.error("Update failed:", error);
-     
     }
   };
 
@@ -95,26 +90,24 @@ const EditEmployee = () => {
     navigate("/employee");
   };
 
-
-
   return (
     <div className="main-create-emp">
       <div className="header-container">
         <HeaderCard title="Edit Employee" />
       </div>
       <div className="right-card">
-        <UserForm 
-          disable={false}
+        <UserForm
+          disable={true}
           values={values}
           onChange={(field, value) => {
-            setValues(prev => ({ ...prev, [field]: value }));
-          }} 
+            setValues((prev) => ({ ...prev, [field]: value }));
+          }}
           onAddressChange={(field, value) => {
-            setValues(prev => ({
+            setValues((prev) => ({
               ...prev,
-              address: { ...prev.address, [field]: value }
+              address: { ...prev.address, [field]: value },
             }));
-          }} 
+          }}
         />
         <div className="btns">
           <Button onClick={handleEdit} variant="primary">

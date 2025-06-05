@@ -9,9 +9,9 @@ import { useGetDepartmentListQuery } from '../../api-services/department/departm
 
      
 
-const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void,disable?:boolean}) => {
-    const isEdit= window.location.href.includes("edit") 
-  const {id}=useParams()
+const UserForm = ({values,onChange,onAddressChange,disable}:{values:Employee,onChange:(field:string,value:string)=>void,onAddressChange:(field:string,value:string)=>void,disable?:boolean}) => {
+    // const isEdit= window.location.href.includes("edit") 
+
   const {data}=useGetDepartmentListQuery({})
 
   return (
@@ -36,13 +36,13 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
           />
           <UserInput  onChange={(e)=>{
             onChange("experience",e.target.value)
-           }} type="number" value={values.experience} label="Experience (yrs)"  />
+           }} type="number" value={(values.experience).toString()} placeholder='' label="Experience (yrs)"  />
               <UserInput
             type="number"
              onChange={(e)=>{
             onChange("age",e.target.value)
            }}
-            value={values.age}
+            value={(values.age).toString()}
             label="Age"
             placeholder="Age"
           />
@@ -67,14 +67,13 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
           {data && <SelectInput
             label="Department"
              onChange={(e)=>{
-            const selectedOption = data.find(dept => dept.name === e.target.value);
+            const selectedOption = data.find((dept:{id:string,name:string}) => dept.name === e.target.value);
     if (selectedOption) {
-      onChange("departmentId", selectedOption.id);
-      
+      onChange("departmentId", selectedOption.id);  
     }
            }}
             value={values.department}
-            options={data.map((dept)=>({
+            options={data.map((dept:{id:string,name:string})=>({
               id:dept.id,
               value:dept.name
             }))}
@@ -134,7 +133,7 @@ const UserForm = ({values,onChange,onAddressChange,disable,}:{values:Employee,on
             value={values.employeeId}
             placeholder={disable ? `${values.employeeId}`: "Employee ID"}
             disable={disable}
-            className={isEdit ? "edit":""}
+            className={disable? "edit":""}
           />
         </form>
   )

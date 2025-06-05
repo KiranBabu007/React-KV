@@ -7,12 +7,11 @@
  */
 
 export interface Address {
-  houseNo: number;  // Changed from string to number
+  houseNo: number; // Changed from string to number
   line1: string;
   line2: string;
-  pincode: number;  // Changed from string to number
+  pincode: number; // Changed from string to number
 }
-
 
 export const EmployeeRole = {
   UI: "UI",
@@ -32,8 +31,8 @@ export const EmployeeStatus = {
 export type Status = (typeof EmployeeStatus)[keyof typeof EmployeeStatus];
 
 export interface Employee {
-  id?:string
-  departmentId:number,
+  id?: string;
+  departmentId: number;
   employeeId: string;
   email: string;
   name: string;
@@ -50,7 +49,7 @@ export interface Employee {
 export const EMPLOYEE_ACTION_TYPES = {
   DELETE: "employee/DELETE",
   UPDATE: "employee/UPDATE",
-  ADD:"employee/ADD"
+  ADD: "employee/ADD",
 } as const;
 
 export type EmployeeActionTypes =
@@ -60,15 +59,14 @@ export interface EmployeeState {
   employees: Employee[];
 }
 
-export interface CreateEmployeeAction{
-    type:typeof EMPLOYEE_ACTION_TYPES.ADD;
-    payload:Employee
-    
+export interface CreateEmployeeAction {
+  type: typeof EMPLOYEE_ACTION_TYPES.ADD;
+  payload: Employee;
 }
 
 export interface DeleteEmployeeAction {
   type: typeof EMPLOYEE_ACTION_TYPES.DELETE;
-  payload: string; 
+  payload: string;
 }
 
 export interface UpdateEmployeeAction {
@@ -76,4 +74,7 @@ export interface UpdateEmployeeAction {
   payload: Employee;
 }
 
-export type EmployeeAction = CreateEmployeeAction | DeleteEmployeeAction | UpdateEmployeeAction;
+export type EmployeeAction =
+  | CreateEmployeeAction
+  | DeleteEmployeeAction
+  | UpdateEmployeeAction;

@@ -68,7 +68,7 @@ const LoginRight = () => {
    
  
   }
-
+console.log(showPassword)
   return (
     <div className="right">
       <div className="container">
@@ -93,7 +93,7 @@ const LoginRight = () => {
             }
           />
 
-          {uexceeded && <p>Username must be less than 20 characters</p>}
+          {uexceeded && <p>Username must be less than 30 characters</p>}
 
           <LoginInput
             id="password"
@@ -104,12 +104,14 @@ const LoginRight = () => {
           />
 
           {pexceeded && <p>Password Length Exceeded</p>}
-
+      
+            {error && <p>{error}</p>}
           
           <div className="checkbox-container">
             <input
               type="checkbox"
               id="show-password"
+          
               checked={showPassword}
               onChange={(e) => toggleShowPassword(e.target.checked)}
             />

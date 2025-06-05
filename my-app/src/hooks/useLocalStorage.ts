@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 
 const useLocalStorage = (key:string,defaultValue: boolean = false) => {
-    const [checked,setChecked] = useState(defaultValue)
+    const [checked,setChecked] = useState(()=>{
+        const savedValue=localStorage.getItem(key)
 
-    useEffect(()=>{
-        const savedValue=JSON.stringify(localStorage.getItem(key))
-        if(savedValue!=null){
-            setChecked(JSON.parse(savedValue))
-        }
-    },[key])
+        return savedValue ? JSON.parse(savedValue) : defaultValue
+    })
+
 
     const toggleCheck =(val:boolean)=>{
         setChecked(val)

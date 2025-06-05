@@ -10,7 +10,7 @@ type SelectInputProps = {
   label: string;
   options: Option[];
   name: string;
-  value:string;
+  value?:string;
   onChange:ChangeEventHandler<HTMLSelectElement>
 }
 
