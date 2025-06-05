@@ -55,6 +55,12 @@ const CreateEmployee = () => {
             onClick={async () => {
               const processedData = {
                 ...values,
+                address:{
+                  houseNo:Number(values.address.houseNo),
+                  pincode:Number(values.address.pincode),
+                  line1:values.address.line1,
+                  line2:values.address.line2
+                },
                 departmentId: Number(values.departmentId),
                 experience: Number(values.experience),
                 age: Number(values.age),
